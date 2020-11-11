@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CatFact } from '../models/cat-fact/cat-fact';
 import { CatFactsService } from '../services/cat-facts.service';
 
 @Component({
@@ -7,19 +8,19 @@ import { CatFactsService } from '../services/cat-facts.service';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  randomCatFact: any;
-  catFacts: any[];
+  randomCatFact: CatFact;
+  catFacts: CatFact[];
 
   constructor(private catFactsService: CatFactsService) {}
 
-  getCatFact() {
+  getCatFact(): void {
     this.catFactsService.getCatFact().subscribe((res) => {
       this.randomCatFact = res;
       console.log(this.randomCatFact);
     });
   }
 
-  getCatFacts() {
+  getCatFacts(): void {
     this.catFactsService.getCatFacts().subscribe((res) => {
       this.catFacts = res;
       console.log(this.catFacts);
